@@ -1,5 +1,6 @@
 package jana60.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class UniversityController {
 	public String home(Model model) {
 		List<University> DepartmentsList =(List<University>)repo.findAllByOrderByName();
 		model.addAttribute("DepartmentsList" ,DepartmentsList);
+		//Per testare la lista vuota
+		// model.addAttribute("DepartmentsList" ,new ArrayList<>());
 		return "home";
 	}
 	

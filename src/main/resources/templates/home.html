@@ -1,38 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-   <div th:replace="fragment :: risorse"> </div>
-   
+    <div th:replace="fragment :: risorse"></div>
+
     <title>Sito Università</title>
   </head>
   <body>
- <div th:replace="fragment :: navbaruni('home')"></div>
-  <div class="container">
-    <h1>Ciao ecco i nostri dipartimenti</h1>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Indirizzo</th>
-      <th>Telefono</th>
-      <th>E-mail</th>
-      <th>Sito Web</th>
-      <th>Capo Dipartimento</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr th:each="dep : ${DepartmentsList} ">
-      <td th:text="${dep.getId()}"></td>
-      <td th:text="${dep.getName()}"></td>
-      <td th:text="${dep.getAddress()}"></td>
-      <td th:text="${dep.getPhone()}"></td>
-      <td th:text="${dep.getEmail()}"></td>
-      <td th:text="${dep.getWebsite()}"></td>
-      <td th:text="${dep.getHeadOfDepartment()}"></td>
-    </tr>
-  </tbody>
-</table>
-  </div>
+    <div th:replace="fragment :: navbaruni('home')"></div>
+    <div class="container">
+      <h1>Ciao ecco i nostri dipartimenti</h1>
+
+      <div th:if="${#lists.isEmpty(DepartmentsList)}">
+        <h1>Mi dispiace ma la lista è vuota!</h1>
+      </div>
+      <div th:unless="${#lists.isEmpty(DepartmentsList)}">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Indirizzo</th>
+              <th>Telefono</th>
+              <th>E-mail</th>
+              <th>Sito Web</th>
+              <th>Capo Dipartimento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="dep : ${DepartmentsList} ">
+              <td th:text="${dep.getId()}"></td>
+              <td th:text="${dep.getName()}"></td>
+              <td th:text="${dep.getAddress()}"></td>
+              <td th:text="${dep.getPhone()}"></td>
+              <td th:text="${dep.getEmail()}"></td>
+              <td th:text="${dep.getWebsite()}"></td>
+              <td th:text="${dep.getHeadOfDepartment()}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </body>
 </html>
