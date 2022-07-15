@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <div th:replace="fragment :: risorse"> </div>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+  <div th:replace="fragment :: navbaruni('degrees')"></div>
+    <div class="container">
+    <h1> Ecco i nostri corsi </h1>
+    <table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Id Dipartimento</th>
+      <th>Nome</th>
+      <th>Livello</th>
+      <th>Indirizzo</th>
+      <th>E-mail</th>
+      <th>Sito Web</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="deg : ${DegreesList} ">
+      <td th:text="${deg.getId()}"></td>
+      <td th:text="${deg.getDepartmentId()}"></td>
+      <td th:text="${deg.getName()}"></td>
+      <td th:text="${deg.getLevel()}"></td>
+      <td th:text="${deg.getAddress()}"></td>
+      <td th:text="${deg.getEmail()}"></td>
+      <td th:text="${deg.getWebsite()}"></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+
+  </body>
+</html>

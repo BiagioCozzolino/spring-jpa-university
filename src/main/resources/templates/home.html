@@ -1,21 +1,38 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+   <div th:replace="fragment :: risorse"> </div>
+   
     <title>Sito Università</title>
   </head>
   <body>
+ <div th:replace="fragment :: navbaruni('home')"></div>
   <div class="container">
-    <h1>Ciao ecco i dipartimenti delle nostre università</h1>
-    <ul>
-        <li th:each="dep : ${DepartmentsList} " th:text="${dep.getName()}"></li>
-    </ul>
+    <h1>Ciao ecco i nostri dipartimenti</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Indirizzo</th>
+      <th>Telefono</th>
+      <th>E-mail</th>
+      <th>Sito Web</th>
+      <th>Capo Dipartimento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="dep : ${DepartmentsList} ">
+      <td th:text="${dep.getId()}"></td>
+      <td th:text="${dep.getName()}"></td>
+      <td th:text="${dep.getAddress()}"></td>
+      <td th:text="${dep.getPhone()}"></td>
+      <td th:text="${dep.getEmail()}"></td>
+      <td th:text="${dep.getWebsite()}"></td>
+      <td th:text="${dep.getHeadOfDepartment()}"></td>
+    </tr>
+  </tbody>
+</table>
   </div>
   </body>
 </html>
