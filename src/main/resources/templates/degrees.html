@@ -8,27 +8,25 @@
   <div th:replace="fragment :: navbaruni('degrees')"></div>
     <div class="container">
     <h1> Ecco i nostri corsi </h1>
-    <table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Id Dipartimento</th>
-      <th>Nome</th>
-      <th>Livello</th>
-      <th>Indirizzo</th>
-      <th>E-mail</th>
-      <th>Sito Web</th>
-    </tr>
+    <table class="table">
+  		<thead>
+    		<tr>
+      			<th scope="col" class="table-dark">Nome</th>
+      			<th scope="col" class="table-dark">Dipartimento</th>
+      			<th scope="col" class="table-dark">Livello</th>
+			     <th scope="col" class="table-dark">Indirizzo</th>
+			     <th scope="col" class="table-dark">E-mail</th>
+			     <th scope="col" class="table-dark">Sito Web</th>
+   		 	</tr>
   </thead>
   <tbody>
     <tr th:each="deg : ${DegreesList} ">
-      <td th:text="${deg.getId()}"></td>
-      <td th:text="${deg.getDepartmentId()}"></td>
-      <td th:text="${deg.getName()}"></td>
-      <td th:text="${deg.getLevel()}"></td>
-      <td th:text="${deg.getAddress()}"></td>
-      <td th:text="${deg.getEmail()}"></td>
-      <td th:text="${deg.getWebsite()}"></td>
+      <td class="table-secondary" th:text="${deg.getName()}"></td>
+      <td class="table-primary" th:text="${deg.getDepartment.getName()}"></td>
+      <td class="table-success" th:text="${deg.getLevel()}"></td>
+      <td class="table-danger" th:text="${deg.getAddress()}"></td>
+      <td class="table-warning" th:text="${deg.getEmail()}"></td>
+      <td class="table-info" th:text="${deg.getWebsite()}"></td>
     </tr>
   </tbody>
 </table>

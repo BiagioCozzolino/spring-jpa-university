@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,12 +15,15 @@ public class Degrees {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer departmentId;
 	private String name;
 	private String level;
 	private String address;
 	private String email;
 	private String website;
+	
+	@ManyToOne
+	@JoinColumn (name = "department_id")
+	private University department;
 	
 	//Getter and Setters
 	public Integer getId() {
@@ -26,12 +31,6 @@ public class Degrees {
 	}
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	public Integer getDepartmentId() {
-		return departmentId;
-	}
-	public void setDepartmentId(Integer departmentId) {
-		this.departmentId = departmentId;
 	}
 	public String getName() {
 		return name;
@@ -62,6 +61,12 @@ public class Degrees {
 	}
 	public void setWebsite(String website) {
 		this.website = website;
+	}
+	public University getDepartment() {
+		return department;
+	}
+	public void setDepartment(University department) {
+		this.department = department;
 	}
 	
 	
