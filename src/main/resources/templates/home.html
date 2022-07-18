@@ -27,12 +27,12 @@
           </thead>
           <tbody>
             <tr th:each="dep : ${DepartmentsList} ">
-              <td class="table-secondary" th:text="${dep.getName()}"></td>
-              <td class="table-success" th:text="${dep.getAddress()}"></td>
-              <td class="table-danger" th:text="${dep.getPhone()}"></td>
-              <td class="table-warning" th:text="${dep.getEmail()}"></td>
-              <td class="table-info" th:text="${dep.getWebsite()}"></td>
-              <td class="table-light" th:text="${dep.getHeadOfDepartment()}"></td>
+              <td class="table-secondary"><a th:href="@{|/dipartimenti/${dep.getId()}|}" th:text="${dep.getName()}"></a></td>
+              <td class="table-success" th:text="${dep.getAddress()}"><a href=""></a></td>
+              <td class="table-danger" th:text="${dep.getPhone()}"><a href=""></a></td>
+              <td class="table-warning" th:text="${dep.getEmail()}"><a href=""></a></td>
+              <td class="table-info" th:text="${dep.getWebsite()}"><a href=""></a></td>
+              <td class="table-light" th:text="${dep.getHeadOfDepartment()}"><a href=""></a></td>
             </tr>
           </tbody>
         </table>

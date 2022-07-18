@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <div th:replace="fragment :: risorse"></div>
+    <title>Dettaglio Dipartimenti</title>
+</head>
+<body>
+        <div th:replace="fragment :: navbaruni('home')"></div>
+
+<div class="container">
+	<h1>Benvenuto nella sezione del: </h1>
+    <h1 th:text="${department.getName()}"></h1>
+    <hr>
+      <h2>Ecco i dettagli del tuo dipartimento: </h2>
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Indirizzo</th>
+      <th scope="col">Numero di Telefono</th>
+      <th scope="col">E-Mail</th>
+      <th scope="col">Web-Site</th>
+      <th scope="col">Capo del Dipartimento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" th:text="${department.getAddress()}"></th>
+      <th scope="row" th:text="${department.getPhone()}"></th>
+      <th scope="row" th:text="${department.getEmail()}"></th>
+      <th scope="row" th:text="${department.getWebsite()}"></th>
+      <th scope="row" th:text="${department.getHeadOfDepartment()}"></th>
+    </tr>
+    
+  </tbody>
+</table>
+
+	<h2> Ecco i corsi di laurea associati al dipartimento: </h2>
+	
+	<table class="table">
+  		<thead>
+    		<tr>
+      			<th scope="col" class="table-dark">Nome</th>
+      			<th scope="col" class="table-dark">Livello</th>
+			     <th scope="col" class="table-dark">Indirizzo</th>
+			     <th scope="col" class="table-dark">E-mail</th>
+			     <th scope="col" class="table-dark">Sito Web</th>
+   		 	</tr>
+  </thead>
+  <tbody>
+    <tr th:each="deg : ${department.degrees} ">
+      <td class="table-secondary" th:text="${deg.getName()}"></td>
+      <td class="table-success" th:text="${deg.getLevel()}"></td>
+      <td class="table-danger" th:text="${deg.getAddress()}"></td>
+      <td class="table-warning" th:text="${deg.getEmail()}"></td>
+      <td class="table-info" th:text="${deg.getWebsite()}"></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+</body>
+</html>

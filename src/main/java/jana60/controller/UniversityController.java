@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jana60.model.Degrees;
@@ -43,4 +44,11 @@ public class UniversityController {
 		return "degrees";
 	}
 	
+	@GetMapping("/dipartimenti/{id}")
+	public String departmentDetail(Model model, @PathVariable(name = "id") Integer departmentPrimaryKey) {
+		University currentDepartment = repo.findById(departmentPrimaryKey).get();
+		model.addAttribute("department", currentDepartment);
+		System.out.println(currentDepartment.getDegrees().size());
+		return "departmentDetail";
+	}
 }
