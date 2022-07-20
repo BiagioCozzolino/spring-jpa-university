@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jana60.model.Degrees;
+import jana60.model.Teachers;
 import jana60.model.University;
 import jana60.repository.DegreesRepository;
+import jana60.repository.TeachersRepository;
 import jana60.repository.UniversityRepository;
 
 @Controller
@@ -22,6 +24,8 @@ public class UniversityController {
 	private UniversityRepository repo;
 	@Autowired
 	private DegreesRepository repo2;
+	@Autowired
+	private TeachersRepository repo3;
 	
 	@GetMapping
 	public String fristpage() {
@@ -50,5 +54,12 @@ public class UniversityController {
 		model.addAttribute("department", currentDepartment);
 		System.out.println(currentDepartment.getDegrees().size());
 		return "departmentDetail";
+	}
+	
+	@GetMapping("/teachers")
+	public String teachers(Model model) {
+		List<Teachers> TeachersList = (List<Teachers>)repo3.findAll();
+		model.addAttribute("TeachersList" ,TeachersList);
+		return "teachers";
 	}
 }
