@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <div th:replace="fragment :: risorse"></div>
+
+    <title>Document</title>
+</head>
+<body>
+    <div th:replace="fragment :: navbaruni('teachers')"></div>
+</body>
+	<div class="container">
+	<h1>Ecco i dettagli dell'insegnante: </h1>
+	<h1 th:text="${currentTeachers.getName()}"></h1>
+    <hr>
+    
+    <h2>Ecco i dettagli dell'insegnante: </h2>
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Numero di telefono</th>
+      <th scope="col">E-Mail</th>
+      <th scope="col">Indirizzo Ufficio</th>
+      <th scope="col">Numero Ufficio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" th:text="${currentTeachers.getPhone()}"></th>
+      <th scope="row" th:text="${currentTeachers.getEmail()}"></th>
+      <th scope="row" th:text="${currentTeachers.getOfficeAddress()}"></th>
+      <th scope="row" th:text="${currentTeachers.getOfficeNumber()}"></th>
+    </tr>
+    
+  </tbody>
+</table>
+	<hr>
+	<h2> Ecco i corsi di laurea tenuti dall'insegnante': </h2>
+	
+	<table class="table">
+  		<thead>
+    		<tr>
+      			<th scope="col" class="table-dark">Nome</th>
+      			<th scope="col" class="table-dark">Livello</th>
+			     <th scope="col" class="table-dark">Indirizzo</th>
+			     <th scope="col" class="table-dark">E-mail</th>
+			     <th scope="col" class="table-dark">Sito Web</th>
+   		 	</tr>
+  </thead>
+  <tbody>
+    <tr th:each="deg : ${currentTeachers.teachersCourses} ">
+      <td class="table-secondary" th:text="${deg.getName()}"></td>
+      <td class="table-success" th:text="${deg.getLevel()}"></td>
+      <td class="table-danger" th:text="${deg.getAddress()}"></td>
+      <td class="table-warning" th:text="${deg.getEmail()}"></td>
+      <td class="table-info" th:text="${deg.getWebsite()}"></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+</html>

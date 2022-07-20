@@ -23,7 +23,7 @@
     </thead>
     <tbody>
       <tr th:each="teach : ${TeachersList} ">
-        <td class="table-secondary" th:text="${teach.getName()}"></td>
+        <td class="table-secondary"><a th:href="@{|/teachers/${teach.getId()}|}" th:text="${teach.getName()}"></a></td>
         <td class="table-primary" th:text="${teach.getSurname()}"></td>
         <td class="table-success" th:text="${teach.getPhone()}"></td>
         <td class="table-danger" th:text="${teach.getEmail()}"></td>

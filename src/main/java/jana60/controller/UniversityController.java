@@ -52,7 +52,6 @@ public class UniversityController {
 	public String departmentDetail(Model model, @PathVariable(name = "id") Integer departmentPrimaryKey) {
 		University currentDepartment = repo.findById(departmentPrimaryKey).get();
 		model.addAttribute("department", currentDepartment);
-		System.out.println(currentDepartment.getDegrees().size());
 		return "departmentDetail";
 	}
 	
@@ -62,4 +61,13 @@ public class UniversityController {
 		model.addAttribute("TeachersList" ,TeachersList);
 		return "teachers";
 	}
+	
+	
+	@GetMapping("/teachers/{id}")
+	public String teachersDetail (Model model, @PathVariable(name = "id") Integer teachersPrimaryKey) {
+		Teachers currentTeachers = repo3.findById(teachersPrimaryKey).get();
+		model.addAttribute("currentTeachers", currentTeachers);
+		return "teachersDetail";
+}
+	
 }
