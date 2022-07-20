@@ -1,13 +1,16 @@
 package jana60.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.server.ResponseStatusException;
 
 import jana60.model.Degrees;
 import jana60.model.Teachers;
@@ -65,9 +68,15 @@ public class UniversityController {
 	
 	@GetMapping("/teachers/{id}")
 	public String teachersDetail (Model model, @PathVariable(name = "id") Integer teachersPrimaryKey) {
-		Teachers currentTeachers = repo3.findById(teachersPrimaryKey).get();
-		model.addAttribute("currentTeachers", currentTeachers);
-		return "teachersDetail";
+		Optional<Teachers> queryResult = repo3.findById(teachersPrimaryKey);
+	    if (queryResult.isPresent()) {
+	    	Teachers currentTeachers = repo3.findById(teachersPrimaryKey).get();
+			model.addAttribute("currentTeachers", currentTeachers);
+	      return "teachersDetail";
+	    } else {
+	      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Questo insegnante non esiste");
+	    }
+	    
 }
 	
 }
