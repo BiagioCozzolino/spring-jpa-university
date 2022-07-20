@@ -27,12 +27,8 @@ public class Teachers {
 	private Integer officeNumber;
 	
 	@ManyToMany
-	@JoinTable(
-			name="courses_teachers",
-			joinColumns = { @JoinColumn(name = "teacher_id") },
-			inverseJoinColumns = { @JoinColumn(name = "course_id") }
-			)
-	private List<Degrees> teachersCourses;
+	@JoinTable(name="course_teacher",joinColumns = { @JoinColumn(name = "teacher_id") },inverseJoinColumns = { @JoinColumn(name = "course_id") })
+	private List<Courses> teachersCourses;
 	
 	//Getter and Setters
 	public Integer getId() {
@@ -76,7 +72,16 @@ public class Teachers {
 	}
 	public void setOfficeNumber(Integer officeNumber) {
 		this.officeNumber = officeNumber;
+		
 	}
+	public List<Courses> getTeachersCourses() {
+		return teachersCourses;
+	}
+	public void setTeachersCourses(List<Courses> teachersCourses) {
+		this.teachersCourses = teachersCourses;
+	}
+	
+	
 	
 	
 	

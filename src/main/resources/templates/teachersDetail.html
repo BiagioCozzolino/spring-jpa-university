@@ -10,7 +10,7 @@
 </body>
 	<div class="container">
 	<h1>Ecco i dettagli dell'insegnante: </h1>
-	<h1 th:text="${currentTeachers.getName()}"></h1>
+	<h1 th:text="|${currentTeachers.getName()} ${currentTeachers.getSurname()}|"></h1>
     <hr>
     
     <h2>Ecco i dettagli dell'insegnante: </h2>
@@ -32,29 +32,35 @@
     </tr>
     
   </tbody>
+   
+
 </table>
 	<hr>
+	 
 	<h2> Ecco i corsi di laurea tenuti dall'insegnante': </h2>
 	
 	<table class="table">
   		<thead>
     		<tr>
       			<th scope="col" class="table-dark">Nome</th>
-      			<th scope="col" class="table-dark">Livello</th>
-			     <th scope="col" class="table-dark">Indirizzo</th>
-			     <th scope="col" class="table-dark">E-mail</th>
+      			<th scope="col" class="table-dark">Descrizione</th>
+			     <th scope="col" class="table-dark">Periodo inizio</th>
+			     <th scope="col" class="table-dark">Anno inizio</th>
+			     <th scope="col" class="table-dark">CFU</th>
 			     <th scope="col" class="table-dark">Sito Web</th>
    		 	</tr>
   </thead>
   <tbody>
     <tr th:each="deg : ${currentTeachers.teachersCourses} ">
       <td class="table-secondary" th:text="${deg.getName()}"></td>
-      <td class="table-success" th:text="${deg.getLevel()}"></td>
-      <td class="table-danger" th:text="${deg.getAddress()}"></td>
-      <td class="table-warning" th:text="${deg.getEmail()}"></td>
+      <td class="table-success" th:text="${deg.getDescription()}"></td>
+      <td class="table-danger" th:text="${deg.getPeriod()}"></td>
+      <td class="table-warning" th:text="${deg.getYear()}"></td>
+      <td class="table-info" th:text="${deg.getCfu()}"></td>
       <td class="table-info" th:text="${deg.getWebsite()}"></td>
     </tr>
   </tbody>
 </table>
+
     </div>
 </html>
